@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux,Docker," />
+  <meta name="keywords" content="Docker,Linux," />
 
 
 
@@ -87,10 +87,10 @@
 <meta property="og:description" content="docker官方地址 docker镜像地址 docker官方文档地址 卸载旧版本Older versions of Docker were called docker, docker.io, or docker-engine. If these are installed, uninstall them: 123sudo apt-get remove docker \">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-19T02:01:36.000Z">
-<meta property="article:modified_time" content="2020-03-19T02:05:14.823Z">
+<meta property="article:modified_time" content="2020-04-14T05:10:12.317Z">
 <meta property="article:author" content="John Lee">
-<meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
 
@@ -401,15 +401,19 @@
 </li>
 <li><p>添加Docker的官方GPG密钥：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;ubuntu&#x2F;gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+<p>添加阿里的GPG密钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL httpss:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;ubuntu&#x2F;gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>写入软件源信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository &quot;deb [arch&#x3D;amd64] http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;ubuntu $(lsb_release -cs) stable&quot;</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="更新并安装-Docker-CE"><a href="#更新并安装-Docker-CE" class="headerlink" title="更新并安装 Docker CE:"></a>更新并安装 Docker CE:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y update</span><br><span class="line">sudo apt-get -y install docker-ce</span><br></pre></td></tr></table></figure>
-
-</li>
+<li><p>更新并安装 Docker CE:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y update</span><br><span class="line">sudo apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></li>
+<li><p>配置阿里加速器<br>这里每个阿里用户都有，去<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里官网控制台</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo tee &#x2F;etc&#x2F;docker&#x2F;daemon.json &lt;&lt;-&#39;EOF&#39;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;lw66rvhu.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h3 id="使用脚本自动安装-推荐安装方法"><a href="#使用脚本自动安装-推荐安装方法" class="headerlink" title="使用脚本自动安装(推荐安装方法)"></a>使用脚本自动安装(推荐安装方法)</h3></li>
 </ol>
-<h3 id="使用脚本自动安装-推荐安装方法"><a href="#使用脚本自动安装-推荐安装方法" class="headerlink" title="使用脚本自动安装(推荐安装方法)"></a>使用脚本自动安装(推荐安装方法)</h3><p>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，Ubuntu 系统上可以使用这套脚本安装：</p>
+<p>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，Ubuntu 系统上可以使用这套脚本安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br></pre></td></tr></table></figure>
 
 <p>添加中国加速镜像</p>
@@ -473,6 +477,10 @@
 <td>docker rm -f 进程ID</td>
 <td>删除某个进程</td>
 </tr>
+<tr>
+<td>docker rmi imageID</td>
+<td>删除某个镜像</td>
+</tr>
 </tbody></table>
 
       
@@ -491,9 +499,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
             <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -670,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用APT安装"><span class="nav-number">2.</span> <span class="nav-text">使用APT安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新并安装-Docker-CE"><span class="nav-number">3.</span> <span class="nav-text">更新并安装 Docker CE:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用脚本自动安装-推荐安装方法"><span class="nav-number">4.</span> <span class="nav-text">使用脚本自动安装(推荐安装方法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Docker-CE"><span class="nav-number">5.</span> <span class="nav-text">启动Docker CE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置普通用户课以操作"><span class="nav-number">6.</span> <span class="nav-text">设置普通用户课以操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker的基本使用"><span class="nav-number">7.</span> <span class="nav-text">docker的基本使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用APT安装"><span class="nav-number">2.</span> <span class="nav-text">使用APT安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用脚本自动安装-推荐安装方法"><span class="nav-number">3.</span> <span class="nav-text">使用脚本自动安装(推荐安装方法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Docker-CE"><span class="nav-number">4.</span> <span class="nav-text">启动Docker CE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置普通用户课以操作"><span class="nav-number">5.</span> <span class="nav-text">设置普通用户课以操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker的基本使用"><span class="nav-number">6.</span> <span class="nav-text">docker的基本使用</span></a></li></ol></div>
             
 
           </div>
