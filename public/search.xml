@@ -123,11 +123,11 @@
       
         <tags>
             
-            <tag> Docker </tag>
+            <tag> Linux </tag>
             
             <tag> GitLab </tag>
             
-            <tag> Linux </tag>
+            <tag> Docker </tag>
             
         </tags>
       
@@ -146,9 +146,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> docker </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -167,9 +167,9 @@
       
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Docker </tag>
             
         </tags>
       
