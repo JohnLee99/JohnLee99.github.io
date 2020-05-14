@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="排序原理1.比较相邻元素，如果前一个元素比后一个元素大，就交换元素位置 2.对每对相邻元素做同样的工作，从开始第一对元素到结尾的最后一对元素。最终最后位置的元素就是最大值    冒泡排序API设计**    类名 Bubble    构造方法 Bubble():创建Bubble对象   成员方法 1. public static void sort(Comparable[] a)：对数组内元素进行">
+<meta name="description" content="排序原理1.比较相邻元素，如果前一个元素比后一个元素大，就交换元素位置 2.对每对相邻元素做同样的工作，从开始第一对元素到结尾的最后一对元素。最终最后位置的元素就是最大值    冒泡排序API设计   类名 Bubble    构造方法 Bubble():创建Bubble对象   成员方法 1. public static void sort(Comparable[] a)：对数组内元素进行排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="冒泡排序">
 <meta property="og:url" content="http://yoursite.com/2020/05/14/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="wanfurong">
-<meta property="og:description" content="排序原理1.比较相邻元素，如果前一个元素比后一个元素大，就交换元素位置 2.对每对相邻元素做同样的工作，从开始第一对元素到结尾的最后一对元素。最终最后位置的元素就是最大值    冒泡排序API设计**    类名 Bubble    构造方法 Bubble():创建Bubble对象   成员方法 1. public static void sort(Comparable[] a)：对数组内元素进行">
+<meta property="og:description" content="排序原理1.比较相邻元素，如果前一个元素比后一个元素大，就交换元素位置 2.对每对相邻元素做同样的工作，从开始第一对元素到结尾的最后一对元素。最终最后位置的元素就是最大值    冒泡排序API设计   类名 Bubble    构造方法 Bubble():创建Bubble对象   成员方法 1. public static void sort(Comparable[] a)：对数组内元素进行排序">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/14/kI28FJi3dGCvuyW.png">
 <meta property="article:published_time" content="2020-05-14T09:49:46.000Z">
-<meta property="article:modified_time" content="2020-05-14T10:47:27.423Z">
+<meta property="article:modified_time" content="2020-05-14T10:50:20.448Z">
 <meta property="article:author" content="John Lee">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="排序">
@@ -395,8 +395,7 @@
 <img src="https://i.loli.net/2020/05/14/kI28FJi3dGCvuyW.png" height="50%" width="50%">
 </a>
 
-<h3 id="冒泡排序API设计"><a href="#冒泡排序API设计" class="headerlink" title="冒泡排序API设计"></a>冒泡排序API设计</h3><p>**</p>
-<table>
+<h3 id="冒泡排序API设计"><a href="#冒泡排序API设计" class="headerlink" title="冒泡排序API设计"></a>冒泡排序API设计</h3><table>
 <thead>
 <tr>
 <th>类名</th>
@@ -411,67 +410,11 @@
 <td>成员方法</td>
 <td>1. public static void sort(Comparable[] a)：对数组内元素进行排序                                                               2. public static boolean greater(Comparable v, Comparable w)：比较两个元素的大小                         3. public static void exchange(Comparable[]a, int i, int j)：交换两个元素的位置</td>
 </tr>
-<tr>
-<td>### 代码实现</td>
-<td></td>
-</tr>
-<tr>
-<td><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nsu.sort.bubble;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bubble</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 对数组a中的元素进行排序</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span>&#123;</span><br><span class="line">        <span class="comment">//参与冒泡的元素的个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = a.length-<span class="number">1</span>; i&gt;<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)&#123;</span><br><span class="line">                <span class="comment">//比较索引j处的值和j+1处的值</span></span><br><span class="line">                <span class="keyword">if</span> (greater(a[j],a[j+<span class="number">1</span>]))&#123;</span><br><span class="line">                    exchange(a,j,j+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断v元素是否大于w元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> v</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> w</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">greater</span><span class="params">(Comparable v, Comparable w)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.compareTo(w) &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 元素i和j交换位置</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> j</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exchange</span><span class="params">(Comparable[]a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        Comparable temp;</span><br><span class="line">        temp = a[i];</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></td>
-<td></td>
-</tr>
-<tr>
-<td>代码测试</td>
-<td></td>
-</tr>
-<tr>
-<td><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nsu.sort.bubble;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer[] arr = &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"排序前数组："</span>+ Arrays.toString(arr));</span><br><span class="line">        System.out.println(<span class="string">"排序后~~~~~~"</span>);</span><br><span class="line">        Bubble.sort(arr);</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></td>
-<td></td>
-</tr>
-<tr>
-<td>### 冒泡排序的时间复杂度分析:</td>
-<td></td>
-</tr>
-<tr>
-<td>冒泡排序使用了双层for循环，其中内层循环的循环体是真正完成排序的代码，所以，</td>
-<td></td>
-</tr>
-<tr>
-<td>我们分析冒泡排序的时间复杂度，主要分析一下内层循环体的执行次数即可。</td>
-<td></td>
-</tr>
-<tr>
-<td>在最坏情况下，也就是假如要排序的元素为{6,5,4,3,2,1}逆序，那么：</td>
-<td></td>
-</tr>
-<tr>
-<td>元素比较的次数为：</td>
-<td></td>
-</tr>
-<tr>
-<td>(N-1)+(N-2)+(N-3)+…+2+1=((N-1)+1)*(N-1)/2=N^2/2-N/2;</td>
-<td></td>
-</tr>
-<tr>
-<td>元素交换的次数为：</td>
-<td></td>
-</tr>
-<tr>
-<td>(N-1)+(N-2)+(N-3)+…+2+1=((N-1)+1)*(N-1)/2=N^2/2-N/2;</td>
-<td></td>
-</tr>
-<tr>
-<td>总执行次数为：</td>
-<td></td>
-</tr>
-<tr>
-<td>(N^2/2-N/2)+(N^2/2-N/2)=N^2-N;</td>
-<td></td>
-</tr>
-<tr>
-<td>按照大O推导法则，保留函数中的最高阶项那么最终冒泡排序的时间复杂度为O(N^2).</td>
-<td></td>
-</tr>
 </tbody></table>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nsu.sort.bubble;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bubble</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 对数组a中的元素进行排序</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span>&#123;</span><br><span class="line">        <span class="comment">//参与冒泡的元素的个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = a.length-<span class="number">1</span>; i&gt;<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)&#123;</span><br><span class="line">                <span class="comment">//比较索引j处的值和j+1处的值</span></span><br><span class="line">                <span class="keyword">if</span> (greater(a[j],a[j+<span class="number">1</span>]))&#123;</span><br><span class="line">                    exchange(a,j,j+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断v元素是否大于w元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> v</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> w</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">greater</span><span class="params">(Comparable v, Comparable w)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.compareTo(w) &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 元素i和j交换位置</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> j</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exchange</span><span class="params">(Comparable[]a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        Comparable temp;</span><br><span class="line">        temp = a[i];</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nsu.sort.bubble;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer[] arr = &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"排序前数组："</span>+ Arrays.toString(arr));</span><br><span class="line">        System.out.println(<span class="string">"排序后~~~~~~"</span>);</span><br><span class="line">        Bubble.sort(arr);</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="冒泡排序的时间复杂度分析"><a href="#冒泡排序的时间复杂度分析" class="headerlink" title="冒泡排序的时间复杂度分析:"></a>冒泡排序的时间复杂度分析:</h3><p>冒泡排序使用了双层for循环，其中内层循环的循环体是真正完成排序的代码，所以，<br>我们分析冒泡排序的时间复杂度，主要分析一下内层循环体的执行次数即可。<br>在最坏情况下，也就是假如要排序的元素为{6,5,4,3,2,1}逆序，那么：<br>元素比较的次数为：<br> (N-1)+(N-2)+(N-3)+…+2+1=((N-1)+1)<em>(N-1)/2=N^2/2-N/2;<br>元素交换的次数为：<br> (N-1)+(N-2)+(N-3)+…+2+1=((N-1)+1)</em>(N-1)/2=N^2/2-N/2;<br>总执行次数为：<br> (N^2/2-N/2)+(N^2/2-N/2)=N^2-N;<br>按照大O推导法则，保留函数中的最高阶项那么最终冒泡排序的时间复杂度为O(N^2).</p>
 
       
     </div>
@@ -668,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序原理"><span class="nav-number">1.</span> <span class="nav-text">排序原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序API设计"><span class="nav-number">1.1.</span> <span class="nav-text">冒泡排序API设计</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序原理"><span class="nav-number">1.</span> <span class="nav-text">排序原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序API设计"><span class="nav-number">1.1.</span> <span class="nav-text">冒泡排序API设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序的时间复杂度分析"><span class="nav-number">1.3.</span> <span class="nav-text">冒泡排序的时间复杂度分析:</span></a></li></ol></li></ol></div>
             
 
           </div>
